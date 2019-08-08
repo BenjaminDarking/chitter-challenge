@@ -1,4 +1,4 @@
-require 'sinatra'
+require 'sinatra/base'
 require_relative './lib/chitter.rb'
 require_relative './lib/peep.rb'
 
@@ -18,6 +18,15 @@ class NewChitter < Sinatra::Base
   post '/sign_up' do
     Peep.new(params[:username], params[:email], params[:password])
     redirect 'welcome'
+  end
+
+
+  get '/log_in' do
+    erb :log_in
+  end
+
+  post '/log_in' do
+    
   end
 
   get '/welcome' do
