@@ -7,7 +7,7 @@ class NewChitter < Sinatra::Base
   enable :sessions
 
   get '/' do
-    erb :log_in
+    redirect('/welcome')
   end
 
   get '/sign_up' do
@@ -31,8 +31,8 @@ class NewChitter < Sinatra::Base
   end
 
   post '/new_peep' do
-    Chitter.create(text: params[:text], peep_user: params[:peep_user])
-    redirect('/home')
+    Peep.create(text: params[:text])
+    redirect('/welcome')
   end
 
   run! if app_file == $0
